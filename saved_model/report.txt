@@ -1,0 +1,27 @@
+
+INTERPRETATION OF RESULTS
+- Accuracy 84.8%: out of 100 students the model has never seen, about 85 are predicted correctly.
+- Recall (Fail) 84.6%: the model found 22 of the 26 students who really failed.
+  This is the most important number, because a missed failing student gets no extra help.
+- Precision (Pass) 91.8%: when the model says "will pass", it is right about 92 times out of 100.
+- Recall (Pass) 84.9% and F1-score 88.2%: passing students are also identified well.
+- Confusion matrix: a failing student predicted to pass is the dangerous error.
+  A passing student flagged as at risk only receives extra attention.
+- Tuning: four configurations were compared on the validation set. The best was "Smaller (16-8, drop 0.2, lr 0.001)".
+  Smaller networks suit this small dataset (252 training students) because they overfit less.
+- Experiment: without the earlier grades G1 and G2 the accuracy dropped (see section 13), so earlier grades are the strongest predictors.
+- Conclusion: the model is a useful early-warning aid, but about 15% of predictions are still wrong,
+  so a teacher must make the final decision.
+
+
+JUSTIFICATION OF THE APPROACH AND PARAMETERS
+- Problem: identify students at risk of failing early, so teachers can give support.
+- Approach: Deep Learning with an FNN. The data is a table of numbers with a pass/fail answer.
+  A CNN is made for images and an RNN for sequences, so they do not fit this data.
+- Units 16 and 8: a small network, because the dataset is small.
+- Dropout 0.2: switches off random neurons so the model does not memorise.
+- Learning rate 0.001: the step size of the Adam optimiser; small steps give stable learning.
+- Batch size 16: small batches suit a small dataset and give more updates.
+- Early stopping (patience 15): training stops when validation loss stops improving.
+- Class weights: failing students count more, because fewer students fail.
+- Decision threshold 0.5: a student with probability above 0.5 is predicted to pass.

@@ -1,0 +1,43 @@
+{
+  "seed": 42,
+  "use_previous_grades": true,
+  "feature_columns": [
+    "sex",
+    "age",
+    "address",
+    "studytime",
+    "failures",
+    "schoolsup",
+    "famsup",
+    "higher",
+    "internet",
+    "romantic",
+    "goout",
+    "health",
+    "G1",
+    "G2",
+    "ParentsEdu",
+    "AlcoholIndex",
+    "LogAbsences",
+    "GradeAvg",
+    "GradeTrend"
+  ],
+  "best_configuration": "Smaller (16-8, drop 0.2, lr 0.001)",
+  "hyperparameters": {
+    "units1": 16,
+    "units2": 8,
+    "dropout": 0.2,
+    "lr": 0.001
+  },
+  "optimizer": "Adam",
+  "loss": "binary_crossentropy",
+  "batch_size": 16,
+  "decision_threshold": 0.5,
+  "test_metrics": {
+    "accuracy": 0.8481,
+    "precision_pass": 0.9184,
+    "recall_pass": 0.8491,
+    "f1_pass": 0.8824,
+    "recall_fail": 0.8462
+  }
+}
